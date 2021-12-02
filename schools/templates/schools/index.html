@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'schools/style.css' %}">
+</head>
+<body>
+{% if latest_school_list %}
+    <ul>
+    {% for question in latest_school_list %}
+        <li><a href="{% url 'schools:detail' continent.id %}">{{ continent.continent_name }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No schools are available.</p>
+{% endif %}
+</body>
+</html>
