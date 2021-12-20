@@ -10,12 +10,15 @@
 <body>
 {% if latest_school_list %}
     <ul>
-    {% for question in latest_school_list %}
+    {% for continent in latest_school_list %}
         <li><a href="{% url 'schools:detail' continent.id %}">{{ continent.continent_name }}</a></li>
     {% endfor %}
     </ul>
 {% else %}
     <p>No schools are available.</p>
 {% endif %}
+
+
+
 </body>
 </html>

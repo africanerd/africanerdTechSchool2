@@ -9,6 +9,22 @@
 <ul>
 {% for region in continent.region_set.all %}
     <li>{{ region.region_name }}</li>
+    {% for country in region.country_set.all %}
+     Country: {{country.country_name}}
+      {% for city in country.city_set.all %}
+     {{city.city_name|linebreaks}}
+        {% for schooladdress in city.schooladdress_set.all %}
+            {{schooladdress.schooladdress_street}},
+            {{schooladdress.schooladdress_pob}},
+            {{schooladdress.schooladdress_stateprovince}},
+            {{schooladdress.schooladdress_postalcode}},
+            {{city.city_name}},
+            {{country.country_name}},
+            {{ region.region_name }}
+    <p></p>
+        {% endfor %}
+      {% endfor %}
+    {% endfor %}
 {% endfor %}
 </ul>
 <hr>

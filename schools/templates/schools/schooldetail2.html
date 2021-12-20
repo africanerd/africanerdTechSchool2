@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>{{ school.school_name }}</h1>
+<ul>
+    <strong><a href="{{school.school_url }}" Target="_blank">{{ school.school_program }}</a></strong><br>
+    {{ school.school_programdesc }}<br>
+
+
+    {% for schoolimage in schoolimages %}
+    <img src="{{ schoolimage.school_imgurlmain.url }}" width="200px"/>
+    <br><i>Photo: {{schoolimage.school_imgdesc}} | Source: {{schoolimage.school_imgsourcename}}</i>
+    {% endfor %}
+    <hr>
+
+    {% for schooltype in schooltypes %}
+   Category: <a href="{% url 'schools:school_detail' schooltype.id %}">{{ schooltype.schooltype_name }}</a>
+    Category: <a href="{% url 'schools:school_category' schooltype.schooltype_name|slugify %}">{{ schooltype.schooltype_name }}</a>
+    {% endfor %}
+
+
+    {% for schooladdress in schooladdresses %}
+
+    <hr>
+    Street: {{schooladdress.schooladdress_street}} <br>
+         P.O Box:  {{schooladdress.schooladdress_pob}}<br>
+          State/Province:  {{schooladdress.schooladdress_stateprovince}}<br>
+           City: {{schooladdress.city.city_name}}<br>
+            Postal/State Code: {{schooladdress.schooladdress_postalcode}}<br>
+
+    Country: {{schooladdress.city.country.country_name}}<br>
+ Region: {{schooladdress.city.country.region.region_name}}<br>
+   Continent: {{schooladdress.city.country.region.continent.continent_name}}
+      {% endfor %}
+
+
+<h2> <a href="{{school.school_url }}" Target="_blank">Visit</a> </h2>
+
+</ul>
+<hr>
+
+</body>
+</html>

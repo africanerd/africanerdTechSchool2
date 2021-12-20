@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'schools/style.css' %}">
+</head>
+<body>
+Test
+
+    <ul>
+    {% for schooltype in allschooltypes %}
+        <li><a href="{% url 'schools:school_detail' schooltype.id %}">{{ schooltype.schooltype_name }}</a></li>
+         Category: <a href="{% url 'schools:school_category' schooltype.schooltype_name|slugify %}">{{ schooltype.schooltype_name}}</a>
+    {% endfor %}
+    </ul>
+
+
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ cats }}- Categories</title>
+</head>
+<body>
+{% if schooltypes %}
+{% for schooltype in schooltypes %}
+<h1>{{ schooltype.schooltype_name}} - Category</h1>
+ {% for school in schools %}
+    <li><li><a href="{% url 'schools:school_detail2' school.slug %}">{{ school.school_name }}</a></li> </li>
+
+  {% endfor %}
+{% endfor %}
+{% else %}
+
+<h1>Category does not exist or there is no school under the category. Please select another <a href="{% url 'schools:school'%}">category.</a></h1>
+{% endif %}
+</body>
+</html>

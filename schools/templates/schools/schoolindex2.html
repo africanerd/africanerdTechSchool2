@@ -1,0 +1,32 @@
+{% load widget_tweaks %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'schools/style.css' %}">
+</head>
+<body>
+<form method="get">
+    {{ schoolfilter.form }}
+<!--        {{ schoolfilter.form.school_name.label_tag }}-->
+<!--        {% render_field schoolfilter.form.school_name class='form-control' %}-->
+<!--     {{ schoolfilter.form.category.label_tag }}-->
+<!--        {% render_field schoolfilter.form.category class='form-control' %}-->
+
+  <input type="submit" value="Submit">
+    </form>
+<!--<h1>Number of schools: {{ schoolfilter.qs|length }}  </h1>-->
+    <ul>
+    {% for school in schoolfilter.qs %}
+
+<!--        <li><a href="{% url 'schools:school_detail2' school.id %}">{{ school.school_name }}</a></li>-->
+        <li><a href="{% url 'schools:school_detail2' school.slug %}">{{ school.school_name }}</a></li>
+    {% endfor %}
+    </ul>
+
+
+</body>
+</html>
