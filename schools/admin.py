@@ -48,10 +48,10 @@ admin.site.register(Continent, ContinentAdmin)
 
 class RegionAdmin(admin.ModelAdmin):
     fieldsets = [
-        (None,               {'fields': ['region_name']}),
+        (None,               {'fields': ['region_name', 'region_desc', 'region_icon']}),
     ]
     inlines = [CountryInline]
-    list_display = ('region_name',)
+    list_display = ('region_name', 'region_desc', 'region_icon')
     search_fields = ['region_name']
 
 
@@ -60,10 +60,10 @@ admin.site.register(Region, RegionAdmin)
 
 class CountryAdmin(admin.ModelAdmin):
     fieldsets = [
-        (None,               {'fields': ['country_name']}),
+        (None,               {'fields': ['country_name', 'country_flagcode']}),
     ]
     inlines = [CityInline]
-    list_display = ('country_name',)
+    list_display = ('country_name', 'country_flagcode')
     search_fields = ['country_name']
 
 
@@ -88,10 +88,10 @@ admin.site.register(SchoolAddress)
 
 class SchoolTypeAdmin(admin.ModelAdmin):
     fieldsets = [
-        (None,    {'fields': ['schooltype_name']}),
+        (None,    {'fields': ['schooltype_name', 'schooltype_desc', 'schooltype_icon', 'schooltype_color']}),
     ]
     inlines = [SchoolInline]
-    list_display = ('schooltype_name',)
+    list_display = ('schooltype_name', 'schooltype_desc', 'schooltype_icon', 'schooltype_color')
     search_fields = ['schooltype_name']
 
 
@@ -99,7 +99,7 @@ admin.site.register(SchoolType, SchoolTypeAdmin)
 
 
 class SchoolAdmin(admin.ModelAdmin):
-    search_fields = ['school_name', 'schooltype']
+    search_fields = ['school_name',]
     list_display = ('school_name', 'school_status', 'schooltype')
     list_filter = ['school_status', 'schooltype']
 

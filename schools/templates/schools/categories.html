@@ -8,9 +8,12 @@
 {% if schooltypes %}
 {% for schooltype in schooltypes %}
 <h1>{{ schooltype.schooltype_name}} - Category</h1>
+Results {{ schools|length }}
  {% for school in schools %}
     <li><li><a href="{% url 'schools:school_detail2' school.slug %}">{{ school.school_name }}</a></li> </li>
-
+  {% for address in school.address.all %}
+{{ address.city.country.country_name }}
+{% endfor %}
   {% endfor %}
 {% endfor %}
 {% else %}

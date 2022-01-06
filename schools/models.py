@@ -27,6 +27,8 @@ class Continent(models.Model):
 class Region(models.Model):
     continent = models.ForeignKey(Continent, on_delete=models.CASCADE)
     region_name = models.CharField(max_length=200)
+    region_desc = models.CharField(max_length=200, blank=True, default='Enter Text', null=True)
+    region_icon = models.CharField(max_length=200, blank=True, default='Enter Text', null=True)
 
     class Meta:
         verbose_name_plural = "Region"
@@ -39,6 +41,7 @@ class Region(models.Model):
 class Country(models.Model):
     region = models.ForeignKey(Region, on_delete=models.CASCADE)
     country_name = models.CharField(max_length=200)
+    country_flagcode = models.CharField(max_length=200, blank=True, default='Enter Text', null=True)
 
     class Meta:
         verbose_name_plural = "Countries"
@@ -68,13 +71,14 @@ class SchoolAddress(models.Model):
     schooladdress_postalcode = models.CharField(max_length=200)
 
     def __str__(self):
-        return self.schooladdress_street
+        return '%s - %s'% (self.schooladdress_street, self.city)
 
 
 class SchoolType(models.Model):
     schooltype_name = models.CharField(max_length=200)
     schooltype_desc = models.TextField(max_length=200, blank=True, default='Enter Text', null=True)
     schooltype_color = models.CharField(max_length=200, blank=True, default='Enter Text', null=True)
+    schooltype_icon = models.CharField(max_length=200, blank=True, default='Enter Text', null=True)
 
     def __str__(self):
         return self.schooltype_name

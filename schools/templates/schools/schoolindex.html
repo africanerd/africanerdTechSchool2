@@ -13,7 +13,8 @@ Test
     <ul>
     {% for schooltype in allschooltypes %}
         <li><a href="{% url 'schools:school_detail' schooltype.id %}">{{ schooltype.schooltype_name }}</a></li>
-         Category: <a href="{% url 'schools:school_category' schooltype.schooltype_name|slugify %}">{{ schooltype.schooltype_name}}</a>
+         Category: <a href="{% url 'schools:school_category' schooltype.schooltype_name|slugify %}">{{ schooltype.schooltype_name}} ({{schooltype.cats_num}})</a>
+
     {% endfor %}
     </ul>
 

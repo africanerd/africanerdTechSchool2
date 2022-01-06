@@ -29,11 +29,11 @@
     Street: {{schooladdress.schooladdress_street}} <br>
          P.O Box:  {{schooladdress.schooladdress_pob}}<br>
           State/Province:  {{schooladdress.schooladdress_stateprovince}}<br>
-           City: {{schooladdress.city.city_name}}<br>
+           City: {{schooladdress.city.city_name}}  <a href="{% url 'schools:school_city' schooladdress.city.city_name|slugify %}">{{schooladdress.city.city_name}}</a><br>
             Postal/State Code: {{schooladdress.schooladdress_postalcode}}<br>
 
-    Country: {{schooladdress.city.country.country_name}}<br>
- Region: {{schooladdress.city.country.region.region_name}}<br>
+    Country: <a href="{% url 'schools:school_country' schooladdress.city.country.country_name|slugify %}">{{schooladdress.city.country.country_name}}</a><br>
+    Region: <a href="{% url 'schools:school_region' schooladdress.city.country.region.region_name|slugify %}">{{schooladdress.city.country.region.region_name}}</a><br>
    Continent: {{schooladdress.city.country.region.continent.continent_name}}
       {% endfor %}
 
